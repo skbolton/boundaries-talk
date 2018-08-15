@@ -1,8 +1,15 @@
 const express = require('express')
+const DIContainer = require('../../main')
+const container = DIContainer()
 const apiRoutes = require('./routes')
 
 module.exports = (port = 3000) => {
   const app = express()
+
+  app.use((req, _res, next) => {
+    req.scope = container.createScope()
+    return next()
+  })
 
   app.use(express.json())
   app.use('/api', apiRoutes)

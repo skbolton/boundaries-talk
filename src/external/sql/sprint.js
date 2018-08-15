@@ -25,18 +25,6 @@ class Sprint extends Model {
       }
     }
   }
-
-  static get jsonSchema () {
-    return {
-      type: 'object',
-      required: [ 'name', 'teamId' ],
-      properties: {
-        teamId: { type: 'integer' },
-        name: { type: 'string', minLength: 2 },
-        active: { type: 'boolean' }
-      }
-    }
-  }
 }
 
 module.exports = Sprint

@@ -32,17 +32,6 @@ class Team extends Model {
       }
     }
   }
-
-  static get jsonSchema () {
-    return {
-      type: 'object',
-      required: ['name'],
-      properties: {
-        id: { type: 'integer' },
-        name: { type: 'string', minLength: 2, maxLength: 30 }
-      }
-    }
-  }
 }
 
 module.exports = Team

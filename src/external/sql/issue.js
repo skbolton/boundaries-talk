@@ -17,18 +17,6 @@ class Issue extends Model {
       }
     }
   }
-
-  static get jsonSchema () {
-    return {
-      type: 'object',
-      required: [ 'title', 'ownerId' ],
-      properties: {
-        title: { type: 'string', minLength: '1' },
-        ownerId: { type: 'integer' },
-        description: { type: 'string' }
-      }
-    }
-  }
 }
 
 module.exports = Issue

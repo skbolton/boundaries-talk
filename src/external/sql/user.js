@@ -32,19 +32,6 @@ class User extends Model {
       }
     }
   }
-
-  static get jsonSchema () {
-    return {
-      type: 'object',
-      required: ['firstName', 'lastName', 'teamId'],
-      properties: {
-        id: { type: 'integer' },
-        firstName: { type: 'string', minLength: 2 },
-        lastName: { type: 'string', minLenght: 2 },
-        teamId: { type: 'integer' }
-      }
-    }
-  }
 }
 
 module.exports = User
