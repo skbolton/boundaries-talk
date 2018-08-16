@@ -12,21 +12,27 @@ module.exports = {
     },
     migrations: {
       tableName: 'wtfs_migrations'
+    },
+    seeds: {
+      directory: './seeds'
     }
   },
-  production: {
+  test: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      database: 'wtfs_test',
+      user: 'postgres',
+      password: 'postgres'
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'knex_migrations'
+      tableName: 'wtfs_migrations'
+    },
+    seeds: {
+      directory: './seeds'
     }
-  }
+  },
 }

@@ -14,6 +14,7 @@ module.exports = (port = 3000) => {
     return res.status(status).json({ error: message })
   })
 
-  app.listen(port, () => console.log(`Server running on port ${port}`))
+  const server = app.listen(port, () => console.log(`Server running on port ${port}`))
+  return server
 }
 

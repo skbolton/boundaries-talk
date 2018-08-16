@@ -17,10 +17,10 @@ issuesRoutes.route('/')
   })
   .post(async (req, res, next) => {
     try {
-      const { title, ownerId, description } = req.body
+      const { title, createdBy, description } = req.body
       // confirm the user exists
-      await usersRepo.findById(ownerId)
-      const issue = await issuesRepo.create({ title, ownerId, description })
+      await usersRepo.findById(createdBy)
+      const issue = await issuesRepo.create({ title, createdBy, description })
 
       return res.status(201).json({ issue })
     } catch (e) {

@@ -11,7 +11,7 @@ class Issue extends Model {
         relation: Model.HasOneRelation,
         modelClass: require('./user'),
         join: {
-          from: 'issues.ownerId',
+          from: 'issues.createdBy',
           to: 'users.id'
         }
       }
@@ -21,10 +21,10 @@ class Issue extends Model {
   static get jsonSchema () {
     return {
       type: 'object',
-      required: [ 'title', 'ownerId' ],
+      required: [ 'title', 'createdBy' ],
       properties: {
         title: { type: 'string', minLength: '1' },
-        ownerId: { type: 'integer' },
+        createdBy: { type: 'integer' },
         description: { type: 'string' },
         active: { type: 'boolean', default: true }
       }
