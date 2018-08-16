@@ -25,8 +25,10 @@ const createTeamAction = ({
     throw new teamValidation.errors
   }
 
-  const createdTeam = await teamsRepo.create(team)
+  const createdTeam = await teamsRepo.create(team.toJSON())
   bus.publish('wtfs.team.created', { event: createdTeam })
+
+  return createdTeam
 }
 
 module.exports = createTeamAction

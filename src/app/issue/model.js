@@ -1,6 +1,6 @@
 const { attributes } = require('structure')
 
-class Issue {}
+class Issue { }
 
 const Model = attributes({
   id: String,
@@ -13,7 +13,11 @@ const Model = attributes({
     required: true,
     minLength: 1
   },
-  description: String
+  description: String,
+  active: {
+    type: Boolean,
+    default: true
+  }
 })(Issue)
 
 module.exports = Model

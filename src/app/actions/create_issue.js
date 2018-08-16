@@ -16,7 +16,6 @@ const createIssueAction = ({
   bus
 }) => async ({ title, description, createdBy }) => {
   const user = await usersRepo.findById(createdBy)
-  console.log(user)
   if (!user) {
     throw new Error('Cannot create issue without valid createdBy user')
   }
@@ -29,8 +28,10 @@ const createIssueAction = ({
     throw issueValidation.errors
   }
 
-  const createdIssue = await issuesRepo.create(issue)
+  const createdIssue = await issuesRepo.create(issue.toJSON())
   bus.publish('wtfs.issue.created', { event: createdIssue })
+
+  return createdIssue
 }
 
 module.exports = createIssueAction

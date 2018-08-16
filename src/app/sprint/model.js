@@ -1,10 +1,6 @@
 const { attributes } = require('structure')
 
-class Sprint {
-  constructor (...args) {
-    console.log(...args)
-  }
-}
+class Sprint { }
 
 const Model = attributes({
   id: String,
@@ -19,7 +15,8 @@ const Model = attributes({
   },
   active: {
     type: Boolean,
-    required: true
+    default: true
   }
 })(Sprint)
 
+module.exports = Model

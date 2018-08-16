@@ -1,34 +1,26 @@
 const { Router } = require('express')
-const sprintsRepo = require('../repositories/sprint')
-const teamsRepo = require('../repositories/team')
-
 const sprintsRoutes = Router()
 
 sprintsRoutes.route('/')
-  .post(async (req, res, next) => {
+  .get(async (req, res, next) => {
     try {
-      const { teamId, name } = req.body
-      // verify team exists
-      const team = await teamsRepo.findById(teamId)
-      // verify that team doesn't have an active sprint already
-      const activeSprint = await sprintsRepo.findActiveSprintForTeam(teamId)
-      if (activeSprint) {
-        const error = new Error(`Team ${teamId} already has an active sprint`)
-        error.status = 400
-        return next(error)
-      }
-      const sprint = await sprintsRepo.create({ name, teamId })
+      const { active = 'true' } = req.query
+      const activeFilter = active === 'true' ? true : false
+      const getSprintsByParams = req.scope.resolve('getSprintsByParams')
+      const sprints = await getSprintsByParams({ active: activeFilter })
 
-      return res.status(201).json({ sprint })
+      return res.json({ sprints })
     } catch (e) {
       return next(e)
     }
   })
-  .get(async (_req, res, next) => {
+  .post(async (req, res, next) => {
     try {
-      const sprints = await sprintsRepo.findAll()
+      const { teamId, name } = req.body
+      const createSprintAction = req.scope.resolve('createSprint')
+      const sprint = await createSprintAction({ teamId, name })
 
-      return res.json({ sprints })
+      return res.status(201).json({ sprint })
     } catch (e) {
       return next(e)
     }

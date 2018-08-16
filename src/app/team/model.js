@@ -11,4 +11,4 @@ const Model = attributes({
   }
 })(Team)
 
-module.exports = Team
+module.exports = Model

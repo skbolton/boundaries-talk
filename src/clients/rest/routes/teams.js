@@ -1,13 +1,12 @@
 const { Router } = require('express')
-const teamsRepo = require('../repositories/team')
-
 const teamsRoutes = Router()
 
 teamsRoutes.route('/')
   .post(async (req, res, next) => {
     try {
       const { name } = req.body
-      const team = await teamsRepo.create({ name })
+      const createTeamAction = req.scope.resolve('createTeam')
+      const team = await createTeamAction({ name })
 
       return res.status(201).json({ team })
     } catch (e) {
@@ -16,7 +15,9 @@ teamsRoutes.route('/')
   })
   .get(async (req, res, next) => {
     try {
-      const teams = await teamsRepo.findAll()
+      const getAllTeamsAction = req.scope.resolve('getAllTeams')
+
+      const teams = await getAllTeamsAction()
 
       return res.json({ teams })
     } catch (e) {

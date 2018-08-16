@@ -4,6 +4,7 @@ exports.up = function(knex) {
     issues.increments()
     issues.string('title')
     issues.string('description')
+    issues.boolean('active').defaultTo(true)
   })
 };
 

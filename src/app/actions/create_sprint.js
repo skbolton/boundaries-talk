@@ -32,8 +32,10 @@ const createSprintAction = ({
     throw sprintValidation.errors
   }
 
-  const createdSprint = await sprintsRepo.create(sprint)
+  const createdSprint = await sprintsRepo.create(sprint.toJSON())
   bus.publish('wtfs.sprint.created', { event: createdSprint })
+
+  return createdSprint
 }
 
 module.exports = createSprintAction

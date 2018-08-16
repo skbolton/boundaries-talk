@@ -10,7 +10,11 @@ const create = team => {
 const findById = id => {
   return TeamSQL.query()
     .findById(id)
-    .then(team => new Team(team))
+    .then(team => {
+      return team
+        ? new Team(team)
+        : null
+    })
 }
 
 const findAll = () => {
@@ -20,10 +24,17 @@ const findAll = () => {
     )
 }
 
+const fetchWhere = teamParams => {
+  return TeamSQL.query()
+    .where(teamParams)
+    .then(teams => teams.map(team => new Team(team)))
+}
+
 module.exports = () => {
   return {
     create,
     findById,
-    findAll
+    findAll,
+    fetchWhere
   }
 }

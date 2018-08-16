@@ -15,7 +15,7 @@ const createUserAction = ({
   usersRepo,
   bus
 }) => async ({ firstName, lastName, teamId }) => {
-  const team = teamsRepo.findById(teamId)
+  const team = await teamsRepo.findById(teamId)
   if (!team) {
     throw new Error('Cannot create user without valid team to assign to')
   }
@@ -27,8 +27,10 @@ const createUserAction = ({
     throw userValidation.errors
   }
 
-  const createdUser = await usersRepo.create(user)
+  const createdUser = await usersRepo.create(user.toJSON())
   bus.publish('wtfs.user.created', { event: createdUser })
+
+  return createdUser
 }
 
 module.exports = createUserAction
