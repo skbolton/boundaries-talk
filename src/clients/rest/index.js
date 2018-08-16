@@ -1,3 +1,3 @@
 const createServer = require('./server')
 
-createServer(3000)
+createServer(process.env.PORT || 3000)

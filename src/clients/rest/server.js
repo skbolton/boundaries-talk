@@ -17,11 +17,11 @@ module.exports = (port = 3000) => {
   // Error handling middleware
   app.use((err, _req, res, _next) => {
     const { status = 500, message = 'Unknown Error Occured' } = err
-    console.log(err.stack)
     console.log(message)
     return res.status(status).json({ error: message })
   })
 
-  app.listen(port, () => console.log(`Server running on port ${port}`))
+  const server = app.listen(port, () => console.log(`Server running on port ${port}`))
+  return server
 }
 
