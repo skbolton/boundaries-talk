@@ -25,7 +25,8 @@ class Issue extends Model {
       properties: {
         title: { type: 'string', minLength: '1' },
         ownerId: { type: 'integer' },
-        description: { type: 'string' }
+        description: { type: 'string' },
+        active: { type: 'boolean', default: true }
       }
     }
   }

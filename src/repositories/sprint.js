@@ -1,7 +1,8 @@
 const Sprint = require('../db/sprint')
 
-const findAll = () => {
+const findWhere = params => {
   return Sprint.query()
+    .where(params)
     .execute()
 }
 
@@ -11,14 +12,7 @@ const create = sprintData => {
     .execute()
 }
 
-const findActiveSprintForTeam = teamId => {
-  return Sprint.query()
-    .findOne({ active: true, teamId })
-    .execute()
-}
-
 module.exports = {
-  findActiveSprintForTeam,
-  findAll,
+  findWhere,
   create
 }

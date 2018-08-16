@@ -11,7 +11,7 @@ sprintsRoutes.route('/')
       // verify team exists
       const team = await teamsRepo.findById(teamId)
       // verify that team doesn't have an active sprint already
-      const activeSprint = await sprintsRepo.findActiveSprintForTeam(teamId)
+      const [ activeSprint ] = await sprintsRepo.findWhere({ teamId, active: true })
       if (activeSprint) {
         const error = new Error(`Team ${teamId} already has an active sprint`)
         error.status = 400
@@ -26,7 +26,9 @@ sprintsRoutes.route('/')
   })
   .get(async (_req, res, next) => {
     try {
-      const sprints = await sprintsRepo.findAll()
+      const { active = 'true' } = req.query
+      const activeFilter = active === 'true'
+      const sprints = await sprintsRepo.findWhere({ active: activeFilter })
 
       return res.json({ sprints })
     } catch (e) {

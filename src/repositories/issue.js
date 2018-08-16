@@ -6,12 +6,13 @@ const create = issueData => {
     .execute()
 }
 
-const findAll = () => {
+const findWhere = params => {
   return Issue.query()
+    .where(params)
     .execute()
 }
 
 module.exports = {
   create,
-  findAll
+  findWhere
 }

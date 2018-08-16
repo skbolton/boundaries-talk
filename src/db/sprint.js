@@ -33,7 +33,7 @@ class Sprint extends Model {
       properties: {
         teamId: { type: 'integer' },
         name: { type: 'string', minLength: 2 },
-        active: { type: 'boolean' }
+        active: { type: 'boolean', default: true }
       }
     }
   }
