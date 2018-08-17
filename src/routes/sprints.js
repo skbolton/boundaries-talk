@@ -24,7 +24,7 @@ sprintsRoutes.route('/')
       return next(e)
     }
   })
-  .get(async (_req, res, next) => {
+  .get(async (req, res, next) => {
     try {
       const { active = 'true' } = req.query
       const activeFilter = active === 'true'
