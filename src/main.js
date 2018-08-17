@@ -1,4 +1,4 @@
-const { createContainer, asFunction, Lifetime } = require('awilix')
+const { createContainer, Lifetime } = require('awilix')
 // we have to require knex connection to set it up
 const knex = require('./external/sql/connection')
 
