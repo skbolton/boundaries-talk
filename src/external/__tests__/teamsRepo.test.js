@@ -41,6 +41,7 @@ describe('Teams Repository', () => {
     const actual = await teamsRepo.create(team.toJSON())
 
     expect(actual).toMatchObject(expected)
+    expect(team).toBeInstanceOf(Team)
   })
   it('can fetch team by id', async () => {
     const id = 1
