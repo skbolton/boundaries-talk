@@ -16,7 +16,7 @@ const createSprintAction = ({
   sprintsRepo,
   bus
 }) => async ({ teamId, name }) => {
-  const team = teamsRepo.findById(teamId)
+  const team = await teamsRepo.findById(teamId)
   if (!team) {
     throw new Error('Sprint cannot be created without a valid team')
   }
@@ -33,9 +33,9 @@ const createSprintAction = ({
   }
 
   const createdSprint = await sprintsRepo.create(sprint.toJSON())
-  bus.publish('wtfs.sprint.created', { event: createdSprint })
+  bus.publish('wtfs.sprint.created', { event: createdSprint.toJSON() })
 
-  return createdSprint
+  return createdSprint.toJSON()
 }
 
 module.exports = createSprintAction

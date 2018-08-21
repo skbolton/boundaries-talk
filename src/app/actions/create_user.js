@@ -28,9 +28,9 @@ const createUserAction = ({
   }
 
   const createdUser = await usersRepo.create(user.toJSON())
-  bus.publish('wtfs.user.created', { event: createdUser })
+  bus.publish('wtfs.user.created', { event: createdUser.toJSON() })
 
-  return createdUser
+  return createdUser.toJSON()
 }
 
 module.exports = createUserAction

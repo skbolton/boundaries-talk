@@ -6,7 +6,7 @@ module.exports = () => {
   const container = createContainer()
 
   container.loadModules([
-    './app/actions/**/*.js',
+    './app/actions/*.js',
     './external/*.js'
   ], {
     cwd: __dirname,

@@ -24,7 +24,7 @@ const findAll = () => {
     )
 }
 
-const fetchWhere = teamParams => {
+const findWhere = teamParams => {
   return TeamSQL.query()
     .where(teamParams)
     .then(teams => teams.map(team => new Team(team)))
@@ -35,6 +35,6 @@ module.exports = () => {
     create,
     findById,
     findAll,
-    fetchWhere
+    findWhere
   }
 }

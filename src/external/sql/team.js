@@ -1,15 +1,6 @@
 const { Model } = require('objection')
 
 class Team extends Model {
-  $beforeInsert() {
-    this.createdAt = new Date().toISOString()
-    this.updatedAt = new Date().toISOString()
-  }
-
-  $beforeUpdate() {
-    this.updatedAt = new Date().toISOString()
-  }
-
   static get tableName () {
     return 'teams'
   }

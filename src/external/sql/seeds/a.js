@@ -7,18 +7,12 @@ exports.seed = function(knex) {
       return knex('teams').insert([
         {
           name: 'Archimedes',
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
         },
         {
           name: 'Apollo',
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
         },
         {
           name: 'Newton',
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString()
         }
       ]);
     });

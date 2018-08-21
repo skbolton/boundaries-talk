@@ -14,7 +14,7 @@ const createTeamAction = ({
   teamsRepo,
   bus
 }) => async ({ name }) => {
-  const teamNameTaken = await teamsRepo.fetchWhere({ name: name.toLowerCase() })
+  const teamNameTaken = await teamsRepo.findWhere({ name })
   if (teamNameTaken.length > 0) {
     throw new Error(`Cannot create new team. Name ${name} already taken`)
   }
@@ -26,9 +26,9 @@ const createTeamAction = ({
   }
 
   const createdTeam = await teamsRepo.create(team.toJSON())
-  bus.publish('wtfs.team.created', { event: createdTeam })
+  bus.publish('wtfs.team.created', { event: createdTeam.toJSON() })
 
-  return createdTeam
+  return createdTeam.toJSON()
 }
 
 module.exports = createTeamAction

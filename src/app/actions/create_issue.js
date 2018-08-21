@@ -29,9 +29,9 @@ const createIssueAction = ({
   }
 
   const createdIssue = await issuesRepo.create(issue.toJSON())
-  bus.publish('wtfs.issue.created', { event: createdIssue })
+  bus.publish('wtfs.issue.created', { event: createdIssue.toJSON() })
 
-  return createdIssue
+  return createdIssue.toJSON()
 }
 
 module.exports = createIssueAction

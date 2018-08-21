@@ -17,4 +17,22 @@ module.exports = {
       directory: './seeds'
     }
   },
+  test: {
+    client: 'postgresql',
+    connection: {
+      database: 'wtfs_test',
+      user: 'postgres',
+      password: 'postgres'
+    },
+    pool: {
+      min: 2,
+      max: 10
+    },
+    migrations: {
+      tableName: 'wtfs_migrations'
+    },
+    seeds: {
+      directory: './seeds'
+    }
+  },
 }
