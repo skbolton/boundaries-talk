@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "knex": "knex --knexfile ./src/db/config/knexfile.js",
-    "watch": "nodemon ./src"
+    "watch": "NODE_ENV=development nodemon ./src"
   },
   "author": "",
   "license": "ISC",
