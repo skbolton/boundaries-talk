@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "knex": "knex --knexfile ./src/db/config/knexfile.js",
+    "knex": "NODE_ENV=development knex --knexfile ./src/db/config/knexfile.js",
     "watch": "NODE_ENV=development nodemon ./src"
   },
   "author": "",
