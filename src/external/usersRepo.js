@@ -22,10 +22,17 @@ const findAll = () => {
     .then(users => users.map(user => new UserModel(user)))
 }
 
+const findWhere = params => {
+  return UserSQL.query()
+    .where(params)
+    .then(users => users.map(user => new UserModel(user)))
+}
+
 module.exports = () => {
   return {
     create,
     findById,
-    findAll
+    findAll,
+    findWhere
   }
 }
