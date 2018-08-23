@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "knex": "knex --knexfile ./src/external/sql/knexfile.js",
-    "watch": "nodemon ./src/clients/rest/index.js",
+    "knex": "NODE_ENV=development knex --knexfile ./src/external/sql/knexfile.js",
+    "watch": "NODE_ENV=development nodemon ./src/clients/rest/index.js",
     "test:app": "NODE_ENV=test jest ./src/app/**/__tests__/*.test.js",
     "test:db": "NODE_ENV=test jest ./src/external/__tests__/*.test.js --runInBand",
     "test:clients": "NODE_ENV=test jest ./src/clients/**/__tests__/*.test.js --runInBand"
