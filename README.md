@@ -1,4 +1,4 @@
-# WTFS
+# Sprint-Planner
 
 ## Business Use Case
 
