@@ -2,7 +2,7 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
-      database: 'wtfs_dev',
+      database: 'sprint_planner_dev',
       user: 'postgres',
       password: 'postgres'
     },
@@ -11,7 +11,7 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'wtfs_migrations'
+      tableName: 'sprint_planner_migrations'
     },
     seeds: {
       directory: './seeds'
@@ -20,7 +20,7 @@ module.exports = {
   test: {
     client: 'postgresql',
     connection: {
-      database: 'wtfs_test',
+      database: 'sprint_planner_test',
       user: 'postgres',
       password: 'postgres'
     },
@@ -29,7 +29,7 @@ module.exports = {
       max: 10
     },
     migrations: {
-      tableName: 'wtfs_migrations'
+      tableName: 'sprint_planner_migrations'
     },
     seeds: {
       directory: './seeds'
