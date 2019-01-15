@@ -6,17 +6,17 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('teams').insert([
         {
-          name: 'Archimedes',
+          name: 'Superman',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
         {
-          name: 'Apollo',
+          name: 'Hulk',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
         {
-          name: 'Newton',
+          name: 'Black Widow',
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         }
