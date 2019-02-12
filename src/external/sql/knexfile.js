@@ -1,38 +1,38 @@
 module.exports = {
   development: {
-    client: 'postgresql',
+    client: "postgresql",
     connection: {
-      database: 'wtfs_dev',
-      user: 'postgres',
-      password: 'postgres'
+      database: "sprint_planner_dev",
+      user: "postgres",
+      password: "postgres"
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'wtfs_migrations'
+      tableName: "sprint_planner_migrations"
     },
     seeds: {
-      directory: './seeds'
+      directory: "./seeds"
     }
   },
   test: {
-    client: 'postgresql',
+    client: "postgresql",
     connection: {
-      database: 'wtfs_test',
-      user: 'postgres',
-      password: 'postgres'
+      database: "sprint_planner_test",
+      user: "postgres",
+      password: "postgres"
     },
     pool: {
       min: 2,
       max: 10
     },
     migrations: {
-      tableName: 'wtfs_migrations'
+      tableName: "sprint_planner_migrations"
     },
     seeds: {
-      directory: './seeds'
+      directory: "./seeds"
     }
-  },
+  }
 }
